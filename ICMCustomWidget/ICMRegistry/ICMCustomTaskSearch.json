@@ -1,0 +1,164 @@
+{
+    "id": "ICMCustomTaskSearch",
+    "title": "ICMCustomTaskSearchs",
+    "category": "CustomWidgets",
+    "description": "Displays a basic search form for finding cases. The widget includes a link to an advanced search form.",
+    "definition": "ICMCustomTaskSearch.json",
+    "preview": "images/casesearch_preview.gif",
+    "icon": "images/casesearch_icon.png",
+    "runtimeClassName": "icmcustom.pgwidget.tasksearch.TaskSearch",
+    "help": "",
+    "previewThumbnail": "images/casesearch_thumb.gif",
+    "properties": [
+        {
+            "propertyType": "property",
+            "type": "string",
+            "id": "PreferredWidth",
+            "defaultValue": "250",
+            "disabled": true,
+            "required": false,
+            "visibility": true,
+            "title": "Preferred Width"
+        },
+		{
+            "propertyType": "property",
+            "type": "string",
+            "id": "PreferredHeight",
+            "defaultValue": "auto",
+            "disabled": true,
+            "required": false,
+            "visibility": false,
+            "title": "Preferred Height"
+        },
+          {
+            "propertyType": "property",
+            "type": "string",
+            "id": "TaskProperties",
+            "defaultValue": "",
+            "required": false,
+            "visibility": true,
+            "title": "Task Properties"
+        },
+        {
+            "propertyType": "property",
+            "type": "string",
+            "id": "CmAcmTaskName",
+            "defaultValue": "",
+            "required": false,
+            "visibility": true,
+            "title": "TaskName"
+        },
+		{
+            "propertyType": "property",
+            "type": "string",
+            "id": "queryProperties",
+            "defaultValue": "",
+            "required": false,
+            "visibility": true,
+            "title": "Properties to be retrieved from Query"
+        },
+         {
+            "propertyType": "property",
+            "type": "label",
+            "id": "Task Status",
+            "visibility": true,
+            "title": "Task Status : "
+        },
+          
+         {
+            "propertyType": "property",
+            "type": "boolean",
+            "id": "Working",
+            "defaultValue": true,
+            "required": true,
+            "visibility": true,
+            "title": "Working"
+          },
+		  {
+            "propertyType": "property",
+            "type": "boolean",
+            "id": "Completed",
+            "defaultValue": true,
+            "required": true,
+            "visibility": true,
+            "title": "Completed"
+          },
+            {
+            "propertyType": "property",
+            "type": "boolean",
+            "id": "All",
+            "defaultValue": false,
+            "required": true,
+            "visibility": true,
+            "title": "All"
+          },
+           	{
+            "propertyType": "property",
+            "type": "boolean",
+            "id": "isShowSummaryViewProperties",
+            "defaultValue": false,
+            "required": true,
+            "visibility": true,
+            "title": "Include properties from the Summary view in a search across case types"
+        },
+		{
+            "propertyType": "property",
+            "type": "boolean",
+            "id": "isHideAdvancedButton",
+            "defaultValue": false,
+            "required": true,
+            "visibility": true,
+            "title": "Hide the Advanced Search"
+        },
+	{
+	    "propertyType": "group",
+            "type": "dropdown",
+            "defaultValue": "showUserSpecified",
+            "id": "advancedSearchUserSpecifiedSelector",
+            "title": "In the advanced search dialog:",
+	    "propertyMembers": [
+                {
+                    "propertyType": "group",
+                    "type": "propertyPanel",
+                    "id": "showUserSpecified",
+                    "title": "Users can specify properties",
+                    "propertyMembers": [
+                        {
+			    "propertyType": "property",
+			    "type": "boolean",
+			    "id": "isShowAllProperties",
+			    "defaultValue": true,
+			    "required": true,
+			    "visibility": true,
+			    "title": "Show all case properties in the user specify field."
+			}
+                    ]
+                },
+                {
+                    "propertyType": "group",
+                    "type": "propertyPanel",
+                    "id": "hideUserSpecified",
+                    "title": "Users cannot specify properties",
+                    "propertyMembers": [
+                    ]
+                }
+            ]
+	}        
+    ],
+    "events": [
+        {
+            "id": "icm.SearchCases",
+            "type": "broadcast",
+            "title": "Search cases",
+            "direction": "published",
+            "description": "The user started a search for cases."
+        },
+        {
+            "id": "icm.ClearContent",
+            "title": "Clear content",
+            "functionName": "handleClearContent",
+            "direction": "subscribed",
+            "description": "Clear the content in the Search widget."
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="IBM Case Manager Custom plug-in" default="all" basedir=".">
+
+	<tstamp>
+		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+	</tstamp>
+
+	<target name="clean">
+		<delete failonerror="false">
+			<fileset dir=".">
+				<include name="*.jar" />
+			</fileset>
+		</delete>
+		<delete dir="bin" />
+	</target>
+
+	<target name="buildPlugin">
+		<mkdir dir="bin" />
+		<javac target="1.6" source="1.6" destdir="bin" srcdir="src" debug="on" includeantruntime="false">
+			<classpath>
+				<pathelement location="C:\Softwares\navigatorAPI.jar" />
+			</classpath>
+		</javac>
+		<copy todir="bin" overwrite="yes">
+			<fileset dir="src">
+				<include name="**/WebContent/**" />
+			</fileset>
+		</copy>
+		<jar destfile="ICMCustomPlugin.jar" update="true">
+			<fileset dir="bin" includes="**/*" />
+			<manifest>
+				<attribute name="Plugin-Class" value="com.ibm.icm.custom.plugin.ICMCustomPlugin" />
+				<section name="build">
+					<attribute name="Built-By" value="${user.name}" />
+					<attribute name="Build" value="${TODAY}" />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="all" depends="clean,buildPlugin" />
+
+</project>

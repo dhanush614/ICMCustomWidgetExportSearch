@@ -1,0 +1,29 @@
+ <div class="icmSearchDialog">
+	<div class="dialogPane">
+<!--		<label for="searchSelector">Class:</label>
+
+		<div data-dojo-type="ecm.widget.search.SearchClassSelector" 
+			 arialabelledby="searchSelector"
+		     selectorStyle="dropdown" filterType="search" data-dojo-attach-point="contentClassSelector" ></div>-->
+	
+	
+		<div class="fieldsSection">
+			<div class="fieldLabel" style="visibility:hidden"><label data-dojo-attach-point="caseTypeInputFieldLabel">${resourceBundle.caseType}</label></div>
+			<div data-dojo-attach-point="caseTypeInputField" style="visibility:hidden"></div>
+			<div class="fieldLabel" style="visibility:hidden"><label data-dojo-attach-point="matchCriteriaInputFieldLabel">${resourceBundle.matchCriteria}</label></div>
+			<div data-dojo-attach-point="matchCriteriaInputField" style="visibility:hidden"></div>
+			<div data-dojo-attach-point="caseCriteriaNode"></div>
+			<div data-dojo-attach-point="wellKnownCriteriaNode"></div>
+		</div>
+		
+		<div data-dojo-attach-point="userCriteriaSection" style="visibility:hidden">
+			<div class="fieldsDivision"></div>
+			
+			<div class="fieldsSection" style="visibility:hidden">
+				<div class="userCriteriaHeader">${resourceBundle.userSpecified}</div>
+				<div class="fieldsDivision" data-dojo-attach-point="userCriteria"></div>
+				<div data-dojo-type="dijit.form.Button" data-dojo-attach-event="onClick: _onAdd" data-dojo-attach-point="addUserCriteriaButton" style="margin: 2px 0;">${resourceBundle.add}</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<div data-dojo-type="dijit.layout.BorderContainer" gutters="false" class="ecmAddContentItemBorderContainer" data-dojo-attach-point="ecmAddContentItemBorderContainer">
+	<div data-dojo-type="dijit.layout.ContentPane" region="center" data-dojo-attach-point="addContentItemTabContainer" style="padding:0;">
+	  <div data-dojo-type="idx.layout.TitlePane" title="${_messages.add_document_general_label}" 
+	  	   class="addContentItemGeneralTitlePane" data-dojo-attach-point="addContentItemGeneralTitlePane">
+		<div data-dojo-attach-point="addContentItemGeneralPane"
+			data-dojo-type="ecm.widget.AddContentItemGeneralPane" tabindex="0" aria-label="${_messages.add_document_general_pane_label}">
+		</div>
+	  </div>
+	  <div data-dojo-type="idx.layout.TitlePane" title="${_messages.add_document_properties_label}" 
+	       class="addContentItemPropertiesTitlePane" data-dojo-attach-point="addContentItemPropertiesTitlePane">
+		<div data-dojo-attach-point="addContentItemPropertiesPane"
+			data-dojo-type="ecm.widget.AddContentItemPropertiesPane" tabindex="0" aria-label="${_messages.add_document_properties_pane_label}" >
+		</div>
+	  </div>
+	  <div data-dojo-type="idx.layout.TitlePane" title="${_messages.add_document_security_label}" 
+	       class="addContentItemSecurityTitlePane" data-dojo-attach-point="addContentItemSecurityTitlePane">
+		<div data-dojo-attach-point="addContentItemSecurityPane"
+			data-dojo-type="ecm.widget.AddContentItemSecurityPane" tabindex="0" aria-label="${_messages.add_document_security_pane_label}">
+		</div>
+ 	  </div>
+	</div>
+</div>

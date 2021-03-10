@@ -1,0 +1,235 @@
+{
+	"id": "ICMCustomTaskList",
+	"title": "ICMCustomTaskList",
+	"category": "CustomWidgets",
+	"description": "Displays a list of the cases for the displayed solution. The list is the result of search criteria passed by an event from the Search widget or a custom widget.",
+	"definition": "ICMCustomTaskList.json",
+	"preview": "images/caselist_preview.gif",
+	"icon": "images/caselist_icon.png",
+	"runtimeClassName": "icmcustom.pgwidget.tasklist.TaskList",
+	"help": "",
+	"previewThumbnail": "images/caselist_thumb.gif",
+	"properties": [{
+			"propertyType": "property",
+			"type": "string",
+			"id": "PreferredWidth",
+			"defaultValue": "600px",
+			"disabled": true,
+			"required": false,
+			"visibility": false,
+			"title": "Preferred Width"
+		},
+		{
+			"propertyType": "property",
+			"type": "string",
+			"id": "PreferredHeight",
+			"defaultValue": "100%",
+			"disabled": true,
+			"required": false,
+			"visibility": false,
+			"title": "Preferred Height"
+		},
+		{
+			"propertyType": "property",
+			"type": "string",
+			"id": "TaskSummaryView",
+			"defaultValue": "",
+			"disabled": false,
+			"required": false,
+			"visibility": true,
+			"title": "Task Summary View"
+		},
+		{
+			"propertyType": "property",
+			"type": "string",
+			"id": "ExtraProperties",
+			"defaultValue": "",
+			"disabled": false,
+			"required": false,
+			"visibility": true,
+			"title": "Extra Properties"
+		},
+		{
+			"propertyType": "property",
+			"type": "string",
+			"id": "TitleProperty",
+			"defaultValue": "",
+			"disabled": false,
+			"required": false,
+			"visibility": true,
+			"title": "Task Identifier"
+		},
+		{
+			"propertyType": "property",
+			"type": "string",
+			"id": "TableTitle",
+			"defaultValue": "",
+			"disabled": false,
+			"required": false,
+			"visibility": true,
+			"title": "Table Title"
+		},
+		{
+			"propertyType": "property",
+			"type": "string",
+			"id": "TableWidth",
+			"defaultValue": "",
+			"disabled": false,
+			"required": false,
+			"visibility": true,
+			"title": "Width"
+		},
+		{
+			"propertyType": "property",
+			"type": "string",
+			"id": "PublishQueueAccess",
+			"defaultValue": "",
+			"disabled": false,
+			"required": false,
+			"visibility": true,
+			"title": "Publish Queue Access"
+		},
+		
+		{
+			"propertyType": "property",
+			"type": "choicelist",
+			"id": "ViewSelection",
+			"defaultValue": "DetailsView",
+			"required": true,
+			"visibility": true,
+			"title": "Select the default view",
+			"options": [{
+					"id": "DetailsView",
+					"title": "Details View"
+				},
+				{
+					"id": "MagazineView",
+					"title": "Magazine View"
+				}
+			]
+		},
+		{
+			"propertyType": "property",
+			"type": "boolean",
+			"id": "EnableSwitch",
+			"defaultValue": true,
+			"required": true,
+			"visibility": true,
+			"title": "Allow user to switch between views"
+		},
+		{
+			"propertyType": "group",
+			"type": "tab",
+			"id": "CaseListToolbarTab",
+			"title": "Toolbar",
+			"propertyMembers": [{
+				"propertyType": "property",
+				"type": "toolbar",
+				"context": ["Case", "CaseReference", "Solution"],
+				"id": "CaseItemToolbar",
+				"title": "Toolbar for the Case List widget",
+				"required": false,
+				"visibility": true,
+				"defaultValue": {
+					"actionList": []
+				}
+			}]
+		},
+		{
+			"propertyType": "group",
+			"type": "tab",
+			"id": "CaseListMenuTab",
+			"title": "Menu",
+			"propertyMembers": [{
+				"propertyType": "property",
+				"type": "contextualMenu",
+				"context": ["Case", "CaseReference", "Solution"],
+				"id": "CaseItemContextMenu",
+				"title": "Menu for the Case List widget",
+				"required": false,
+				"visibility": true,
+				"defaultValue": {
+					"actionList": [{
+							"propertiesValue": {
+								"align": "left",
+								"label": "OpenCase"
+							},
+							"actionDefinitionId": "icm.action.case.OpenCasePage"
+						},
+						{
+							"propertiesValue": {
+								"align": "left",
+								"label": "ShowLinkToCase"
+							},
+							"actionDefinitionId": "icm.action.case.ShowLink"
+						},
+						{
+							"propertiesValue": {
+								"align": "left",
+								"label": "SendLinkToCase"
+							},
+							"actionDefinitionId": "icm.action.case.SendLink"
+						},
+						{
+							"propertiesValue": {
+								"align": "left",
+								"label": "AddCommentToCase"
+							},
+							"actionDefinitionId": "icm.action.comment.AddCaseComment"
+						}
+					]
+				}
+			}]
+		}
+	],
+	"events": [{
+			"id": "icm.SearchCases",
+			"title": "Search cases",
+			"functionName": "handleICM_SearchCasesEvent",
+			"direction": "subscribed",
+			"description": "Update the case list with the cases that were returned by a search."
+		},
+		{
+			"id": "icm.RefreshCaseList",
+			"title": "Refresh",
+			"functionName": "handleICM_RefreshCaseListEvent",
+			"direction": "subscribed",
+			"description": "Rerun the current search query and refresh the list of cases."
+		},
+		{
+			"id": "icm.SortByProperty",
+			"title": "Sort by property",
+			"functionName": "handleICM_SortByProperty",
+			"direction": "subscribed",
+			"description": "Sort the list of cases by the specified property."
+		},
+		{
+			"id": "icm.SelectRow",
+			"title": "Select a row",
+			"functionName": "handleICM_SelectRowEvent",
+			"direction": "subscribed",
+			"description": "Select a row by the row number or the case identifier."
+		},
+		{
+			"id": "icm.ClearContent",
+			"title": "Clear content",
+			"functionName": "handleICM_ClearContentEvent",
+			"direction": "subscribed",
+			"description": "Clear the content in the Case List widget."
+		},
+		{
+			"id": "icm.OpenCase",
+			"type": "broadcast",
+			"title": "Open case",
+			"direction": "published",
+			"description": "The user selected a case that is to be opened in the Case Details page."
+		},
+		{
+			"id": "icm.SelectCase",
+			"type": "broadcast",
+			"title": "Select case",
+			"direction": "published",
+			"description": "The user selected a case that is to be opened in the Case Information widget."
+		}
+	]
+}

@@ -1,0 +1,14 @@
+{
+	"id":"ICMCustomWidget",
+	"title":"ICM Custom Widget",
+	"category":"CustomWidgets",
+	"description":"ICM custom widget",
+	"definition":"ICMCustomWidget.json",
+	"preview":"images/comment_preview.png",
+	"icon":"images/comment_icon.png",
+	"runtimeClassName":"icmcustom.pgwidget.ICMCustomWidget",
+	"help":"",
+	"previewThumbnail":"images/comment_thumb.png",
+	"properties":[],
+	"events":[]
+}

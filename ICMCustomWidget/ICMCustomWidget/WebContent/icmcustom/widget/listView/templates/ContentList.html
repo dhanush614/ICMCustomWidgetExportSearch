@@ -1,0 +1,23 @@
+<div class="ecmContentList" data-dojo-attach-point="containerNode">
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'" data-dojo-attach-point="topContainer" class="topContainer">
+		<div class="toolbarArea">
+			<div class="toolbar">
+			  <div class="ecmContentListToolbar">
+				<div class="toolbarContent"><div data-dojo-attach-point="buttonArea" class="toolbarButtonArea"></div></div>
+			  </div>
+			</div>
+			<div data-dojo-attach-point="toggleViewArea"></div>
+		</div>
+	</div>
+	<div data-dojo-type="idx/layout/BorderContainer" data-dojo-attach-point="gridContainer" class="contentPane" data-dojo-props="region:'center', gutters:false, design:'sidebar'" class="gridArea">
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="gridArea" data-dojo-props="region:'center'" class="compact gridxWholeRow">
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="belowGridArea" data-dojo-props="region:'bottom'" class="belowGridArea" style="display: none">
+			<span data-dojo-attach-point="belowGridNotificationText" class="belowGridNotification"></span>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="itemPropArea" data-dojo-props="splitter:true, region:'trailing'" class="trailingPane">
+		</div>
+	</div>
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="bottomArea" data-dojo-props="region:'bottom'" class="bottomArea">
+	</div>
+</div>

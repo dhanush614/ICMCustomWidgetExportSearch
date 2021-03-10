@@ -1,0 +1,79 @@
+{
+
+	"Name":"IBM Case Manager Custom Widget Package",
+	"Description":"IBM Case Manager Custom Widget Package",
+	"Locale":"",
+	"Version":"1.0",
+	"Categories":[
+		{
+			"id":"CustomWidgets",
+			"title":"CTS Custom Widgets"
+		}
+	],
+	"Widgets":[
+		{
+			"id":"ICMCustomWidget",
+			"title":"ICM Custom Widget",
+			"category":"CustomWidgets",
+			"description":"ICM custom widget",
+			"definition":"ICMCustomWidget.json",
+			"preview":"images/comment_preview.png",
+			"icon":"images/comment_icon.png",
+			"runtimeClassName":"icmcustom.pgwidget.ICMCustomWidget",
+			"help":"",
+			"previewThumbnail":"images/comment_thumb.png"
+		},
+		{
+			"id":"ICMCustomTaskList",
+			"title":"ICMCustomTaskList",
+			"category":"CustomWidgets",
+			"description":"ICM custom TaskList widget",
+			"definition":"ICMCustomTaskList.json",
+			"preview":"images/comment_preview.png",
+			"icon":"images/comment_icon.png",
+			"runtimeClassName":"icmcustom.pgwidget.tasklist.TaskList",
+			"help":"",
+			"previewThumbnail":"images/comment_thumb.png"
+		},
+		{
+			"id":"ICMCustomTaskSearch",
+			"title":"ICMCustomTaskSearch",
+			"category":"CustomWidgets",
+			"description":"ICM custom TaskSearch widget",
+			"definition":"ICMCustomTaskSearch.json",
+			"preview":"images/comment_preview.png",
+			"icon":"images/comment_icon.png",
+			"runtimeClassName":"icmcustom.pgwidget.tasksearch.TaskSearch",
+			"help":"",
+			"previewThumbnail":"images/comment_thumb.png"
+		},
+		{
+			"id":"ICMCustomCaseInfo",
+			"title":"ICMCustomCaseInfo",
+			"category":"CustomWidgets",
+			"description":"ICM custom caseinfo widget",
+			"definition":"ICMCustomCaseInfo.json",
+			"preview":"images/comment_preview.png",
+			"icon":"images/comment_icon.png",
+			"runtimeClassName":"icmcustom.pgwidget.caseinfo.CaseInfo",
+			"help":"",
+			"previewThumbnail":"images/comment_thumb.png"
+		},
+		{
+			"id":"ICMCustomCaseSearch",
+			"title":"ICMCustomCaseSearch",
+			"category":"CustomWidgets",
+			"description":"ICM custom casesearch widget",
+			"definition":"ICMCustomCaseSearch.json",
+			"preview":"images/casesearch_preview.gif",
+			"icon":"images/casesearch_icon.png",
+			"runtimeClassName":"icmcustom.pgwidget.casesearch.CaseSearch",
+			"help":"",
+			"previewThumbnail":"images/casesearch_thumb.gif"
+		}
+
+
+	]
+
+}
+
