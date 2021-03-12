@@ -178,7 +178,7 @@ define(["dojo/_base/declare", "icm/action/Action", "dojo/dom-style",
 					else if(search.searchCriteria.criterion[0].id=="Creator")
 					{
 						var searchVal=search.searchCriteria.criterion[0].value;
-						searchVal=searchVal.toLowerCase();
+						searchVal=searchVal.displayName;
 						if(searchVal == "null" || searchVal == "empty")
 						{
 							var cequery =selectQueryString+search.searchCriteria.criterion[0].id+" is null"
