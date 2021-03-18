@@ -142,6 +142,7 @@ define([
                 },
                 getSearchConditionPropData: function() {
                     var caseTypes = solution.caseTypes;
+                    var prefix = solution.prefix;
                     var sysPropData = {
                             items: []
                         };
@@ -150,7 +151,17 @@ define([
                             caseTypes[i].retrieveAttributeDefinitions(lang.hitch(this, function(retrievedAttributes) {
                                 var rows = retrievedAttributes.length;
                                 for (var i = 0; i < rows; i++) {
-                                    sysPropData.items.push(retrievedAttributes[i]);
+                                	var propSymbolicName = retrievedAttributes[i].symbolicName;
+                                    if (propSymbolicName.includes("_")) {
+                                        var propList = propSymbolicName.split("_");
+                                        if (propList[0] == prefix) {
+                                            sysPropData.items.push(retrievedAttributes[i]);
+                                        }
+                                    }
+                                    if(propSymbolicName=="Creator" || propSymbolicName=="DateCreated" || propSymbolicName=="LastModifier" || 
+                                    		propSymbolicName=="DateLastModified" || propSymbolicName=="CmAcmCaseIdentifier" || propSymbolicName=="CmAcmCaseState"){
+                                    	sysPropData.items.push(retrievedAttributes[i]);
+                                    }
                                     if (i == (rows - 1)) {
                                         this.createSearchConditionDrop(sysPropData);
                                     }
