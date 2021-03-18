@@ -1,0 +1,20 @@
+<div class="icmCaseSearch">
+	
+				<div data-dojo-attach-point="descriptionNode" style="display:none" class="icmIWidgetDescription">${resourceBundle.widgetDescription}</div>
+				<div data-dojo-attach-point="contentNode">
+					<div class="icmQuickSearchContent">
+						<div class="icmQuickSearchPropertyLabel"><label data-dojo-attach-point="searchablePropertySelectLabel">${resourceBundle.searchablePropertyLabel}</label></div>
+						<div class="icmSearchableProperty" data-dojo-attach-point="searchableProperty"></div>
+						<div class="icmSearchableProperty" data-dojo-attach-point="searchableBOProperty" style="display:none"></div>
+							
+						<div class="icmQuickSearchContents" data-dojo-attach-point="quickSearchContent"></div>
+													
+						<div class="icmQuickSearchButtons">
+							<div class="icmDlgItem icmDlgButton icmQuickSearchButton" data-dojo-type="dijit.form.Button" data-dojo-attach-point="searchButton" data-dojo-attach-event="onClick: onClickSearchButton">Export</div>
+							<div class="icmDlgItem icmDlgButton icmQuickSearchButton" data-dojo-type="dijit.form.Button" style="display:none" data-dojo-attach-point="searchMyCasesButton" data-dojo-attach-event="onClick: onClickSearchMyCases">${resourceBundle.searchMyCasesButtonLabel}</div>
+							<a class="icmAdvancedSearchButton" href="#" role="button" data-dojo-attach-point="advancedSearchButton" data-dojo-attach-event="onclick: onAdvancedButtonClick, onkeypress: _onAdvancedButtonPress, onmouseenter:_onMouseEnter,onmouseleave:_onMouseLeave" tabIndex="0" waiRole="link">Advance Export</a>
+						</div>
+					</div>	
+				</div>
+		
+</div>

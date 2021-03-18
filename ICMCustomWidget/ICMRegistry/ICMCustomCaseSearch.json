@@ -30,15 +30,6 @@
             "visibility": false,
             "title": "Preferred Height"
         },
-	{
-            "propertyType": "property",
-            "type": "boolean",
-            "id": "isShowSummaryViewProperties",
-            "defaultValue": false,
-            "required": true,
-            "visibility": true,
-            "title": "Include properties from the Summary view in a search across case types"
-        },
         {
             "propertyType": "property",
             "type": "boolean",
@@ -48,7 +39,7 @@
             "visibility": true,
             "title": "Display search properties in alphabetical order"
         },
-	{
+		{
             "propertyType": "property",
             "type": "boolean",
             "id": "isHideAdvancedButton",
@@ -57,7 +48,16 @@
             "visibility": true,
             "title": "Hide the Advanced Search"
         },
-	{
+        {
+            "propertyType": "property",
+            "type": "string",
+            "id": "caseTypeName",
+            "defaultValue": "",
+            "required": true,
+            "visibility": true,
+            "title": "CaseType Name"
+        },
+        {
 	    "propertyType": "group",
             "type": "dropdown",
             "defaultValue": "showUserSpecified",
@@ -92,20 +92,5 @@
             ]
 	}        
     ],
-    "events": [
-        {
-            "id": "icm.SearchCases",
-            "type": "broadcast",
-            "title": "Search cases",
-            "direction": "published",
-            "description": "The user started a search for cases."
-        },
-        {
-            "id": "icm.ClearContent",
-            "title": "Clear content",
-            "functionName": "handleClearContent",
-            "direction": "subscribed",
-            "description": "Clear the content in the Search widget."
-        }
-    ]
+    "events": []
 }
