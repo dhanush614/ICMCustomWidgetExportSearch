@@ -92,14 +92,18 @@ define([
                             var propVal = excelValObj[k];
                             if (propName.includes("*")) {
                             	if(propName.includes("datetime")){
+                            		if(propVal != null || propVal != ""){
                             		propVal = new Date(propVal);
+                            		}
                             	}
                             	propName = propName.replace(/\* *\([^)]*\) */g, "").trim();    								
     						}
                             else
                             	{
                             	if(propName.includes("datetime")){
+                            		if(propVal != null || propVal != ""){
                             		propVal = new Date(propVal);
+                            		}
                             	}
     							propName = propName.replace(/\([^)]*\) */g, "").trim();
                             	}
