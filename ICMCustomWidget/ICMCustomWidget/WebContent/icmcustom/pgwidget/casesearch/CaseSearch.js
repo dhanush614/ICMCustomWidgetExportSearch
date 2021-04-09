@@ -649,6 +649,7 @@ define(
 																			function(
 																					results) {
 																				if (results.items.length > 0) {
+																					if (results.items.length <= 1500) {
 																					searchResults = results.items;
 																					var fileName = "Search_Results_Export";
 																					fileName = fileName
@@ -726,6 +727,38 @@ define(
 																							.byId(
 																									'gridDiv')
 																							.destroy();
+																					}else{
+																						var fileName = caseTypeValue;
+															                            fileName = fileName + ".xlsx";
+															                            var wb = xlsx.utils.book_new();
+
+															                            wb.SheetNames.push("BulkCaseCreation");
+															                            
+															                            var queryString = [
+															                                          [ceQuery]
+															                                          ];
+															                            wb.Sheets["BulkCaseCreation"] = xlsx.utils.aoa_to_sheet(queryString);
+															                            var wbout = xlsx.write(wb, {
+															                                bookType: 'xlsx',
+															                                type: 'binary'
+															                            });
+															                            function s2ab(s) {
+
+															                                var buf = new ArrayBuffer(s.length);
+															                                var view = new Uint8Array(buf);
+															                                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+															                                return buf;
+
+															                            }
+															                            var blob = new Blob([s2ab(wbout)], {
+															                                type: "application/octet-stream"
+															                            });
+
+															                            var fileObj = new File([blob], fileName);
+															                            var repositoryObj = ecm.model.desktop.getRepositoryByName("tos");
+															                            var folderPath = "/Bulk Case Creation Batch"
+															                                this.addDocument(folderPath, repositoryObj, fileObj);
+																					}
 																				} else {
 																					var messageDialog = new ecm.widget.dialog.MessageDialog(
 																							{
@@ -750,6 +783,77 @@ define(
 																		.log(error);
 															});
 										},
+										addDocument: function(path, rep, file) {
+				                            rep.retrieveItem(path, lang.hitch(this, function(Folder) {
+				                                var parentFolder = Folder;
+				                                var objectStore = ecm.model.desktop.currentSolution.caseTypes[0].objectStore;
+				                                var templateName = "BulkCaseCreationBatch";
+				                                var criterias = [{
+				                                    "name": "DocumentTitle",
+				                                    "value": caseTypeValue,
+				                                    "dataType": "xs:string",
+				                                    "label": "Document Title",
+				                                    "displayValue": caseTypeValue
+				                                }];
+				                                var contentSourceType = "Document";
+				                                var mimeType = file.type;
+				                                var filename = file.name;
+				                                var content = file;
+				                                var childComponentValues = [];
+				                                var permissions = [{
+				                                        "granteeName": "PEWorkflowSystemAdmin",
+				                                        "accessType": 1,
+				                                        "accessMask": 998903,
+				                                        "granteeType": 2001,
+				                                        "inheritableDepth": 0,
+				                                        "roleName": null
+				                                    },
+				                                    {
+				                                        "granteeName": ecm.model.desktop.userId,
+				                                        "accessType": 1,
+				                                        "accessMask": 998903,
+				                                        "granteeType": 2000,
+				                                        "inheritableDepth": 0,
+				                                        "roleName": null
+				                                    },
+				                                    {
+				                                        "granteeName": "#AUTHENTICATED-USERS",
+				                                        "accessType": 1,
+				                                        "accessMask": 131201,
+				                                        "granteeType": 2001,
+				                                        "inheritableDepth": 0,
+				                                        "roleName": null
+				                                    }
+				                                ];
+				                                var securityPolicyId = null;
+				                                var addAsMinorVersion = false;
+				                                var autoClassify = false;
+				                                var allowDuplicateFileNames = true;
+				                                var setSecurityParent = null;
+				                                var teamspaceId;
+				                                var isBackgroundRequest = true;
+				                                var compoundDocument = false;
+				                                var uploadProgress = true;
+				                                var applicationGroup = "";
+				                                var application = "";
+				                                var parameters;
+				                                var templateMetadataValues = [];
+				                                var fullPath = null;
+				                                rep.addDocumentItem(parentFolder, objectStore, templateName, criterias, contentSourceType, mimeType, filename, content, childComponentValues, permissions, securityPolicyId, addAsMinorVersion, autoClassify, allowDuplicateFileNames, setSecurityParent, teamspaceId, lang.hitch(this, function() {
+				                                    console.log("Success");
+				                                    var messageDialog = new ecm.widget.dialog.MessageDialog(
+															{
+																text : "Search Results will be sent to your mail"
+															});
+													messageDialog.show();
+				                                    initiateTaskDialog1.destroy();
+				                                    dijit.byId('addButton').destroy();
+				                                    dijit.byId('remButton').destroy();
+				                                    dijit.byId('gridDiv').destroy();
+
+				                                }, isBackgroundRequest, null, compoundDocument, uploadProgress, applicationGroup, application, parameters, templateMetadataValues, fullPath));
+				                            }));
+				                        },
 
 									});
 							initiateTaskDialog1.setTitle(caseTypeValue
