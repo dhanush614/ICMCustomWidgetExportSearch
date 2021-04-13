@@ -58,6 +58,33 @@
             "title": "CaseType Name"
         },
         {
+            "propertyType": "property",
+            "type": "string",
+            "id": "folderPath",
+            "defaultValue": "",
+            "required": true,
+            "visibility": true,
+            "title": "Folder Path"
+        },
+        {
+            "propertyType": "property",
+            "type": "string",
+            "id": "docClass",
+            "defaultValue": "",
+            "required": true,
+            "visibility": true,
+            "title": "Document Class"
+        },
+        {
+            "propertyType": "property",
+            "type": "string",
+            "id": "targetOS",
+            "defaultValue": "",
+            "required": true,
+            "visibility": true,
+            "title": "Target Object Store"
+        },
+        {
 	    "propertyType": "group",
             "type": "dropdown",
             "defaultValue": "showUserSpecified",
